@@ -233,7 +233,6 @@ function getExtension(path){
 	return path.substring(dotIndex+1, path.length);
 }
 
-( function ( $ ) {
 
 	$( '#get_local_file' ).click( function () {
 		if ( ! window.FileReader ) {
@@ -250,12 +249,12 @@ function getExtension(path){
 					var json = $.trim((fr.result).replace(/(\r\n|\n|\r)/gm,""));
 					var json_string = json.replace(/\s+/g," ");
 					console.log(json_string);
-					$("#textarea1").text(json_string);
+					$("#textarea1").val(json_string);
 					M.textareaAutoResize($('#textarea1'));
 				}
 				else if(getExtension(file.name) == "csv"){
 					var csv = fr.result;
-					$("#textarea2").text(csv);
+					$("#textarea2").val(csv);
 					M.textareaAutoResize($('#textarea2'));
 				}
 				else{
@@ -269,7 +268,7 @@ function getExtension(path){
 			alert( "File not selected or browser incompatible." )
 		}
 	} );
-} )( jQuery );
+
 
 
 

@@ -233,7 +233,7 @@ function getExtension(path){
 	return path.substring(dotIndex+1, path.length);
 }
 
-
+( function ( $ ) {
 	$( '#get_local_file' ).click( function () {
 		if ( ! window.FileReader ) {
 			return alert( 'FileReader is not supported by your browser.' );
@@ -268,6 +268,7 @@ function getExtension(path){
 			alert( "File not selected or browser incompatible." )
 		}
 	} );
+} )( jQuery );
 
 
 

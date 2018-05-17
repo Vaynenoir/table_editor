@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="libs/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+
+	<style>
+.btn_block{
+	display: flex;
+	justify-content: space-around;
+
+}
+.table_block{
+	display: flex;
+	justify-content: center;
+	margin-top: 3%;
+}
+
+	.hidden_input{
+		display: none;
+	}
+	.visible_input{
+		display: block;
+	}
+	#add_name{
+		display: block!important;
+	}
+	.delete_row{
+		cursor: pointer;
+	}
+	.file_container {
+    overflow: hidden;
+    position: relative;
+    font-size: 30px;
+}
+.file_container [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 30px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+.file_loader_container{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.page_title{
+	text-align: center;
+	font-size: 30px;
+	text-transform: uppercase;
+	color: #00695c;
+
+}
+.btn_margin{
+	margin-top: 2%;
+}
+.input_container{
+	border-left: 1px solid #757575;
+}
+.load_form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#get_local_file{
+	margin-left: 20px;
+}
+
+.container{
+	border: 1px solid #ccc;
+	border-radius: 6px;
+}
+
+
+	</style>
+
+
+</head>
+
+<body>
+	
+	
+
+
+	<div class="container">
+		<h1 class="page_title">Table editor</h1>
+		<div class="divider"></div>
+
+
+		<div class="divider"></div>
+		  <div class="row">
+			<form class="col s12">
+			  <div class="row">
+			    <div class="input-field col s6">
+			      <textarea id="textarea1" class="materialize-textarea"></textarea>
+			      <label for="textarea1">Type data in JSON format here and click add button</label>
+			      <a class="btn waves-effect waves-light btn_margin" id="add_json_data">add json to table</a>
+			      <a class="btn waves-effect waves-light btn_margin" id="load_json_data">load table data in .json</a>
+			       <a class="btn waves-effect waves-light btn_margin" id="clear_json">clear data</a>
+			    </div>
+			    <div class="input-field col s6 input_container">
+		          <textarea id="textarea2" class="materialize-textarea"></textarea>
+		          <label for="textarea2">Type data in CSV format here and click add button</label>
+			      <a class="btn waves-effect waves-light btn_margin" id="add_csv_data">add csv data to table</a>
+			      <a class="btn waves-effect waves-light btn_margin" id="load_csv_data">load table data in .csv</a>
+			      <a class="btn waves-effect waves-light btn_margin" id="clear_csv">clear data</a>
+		        </div>
+			  </div>
+			</form>
+		</div>
+		<div class="divider"></div>
+			<div class="load_form">
+				<form method="post" enctype="multipart/form-data" >
+					<div class="file_loader_container">
+					<div>
+						<label for="file" class="file_container">
+							Click here to choose file!
+							<input type="file" id="file" name="file" multiple>
+						</label>
+					</div>
+					<div>
+						<a class="btn" id="get_local_file">submit</a>
+
+					</div> 
+					</div>
+				</form>
+			</div>
+<!-- 		<div class="divider"></div>
+		  <div class="row">
+		    <form class="col s12">
+		      <div class="row">
+
+		      </div>
+		    </form>
+		  </div> -->
+
+		<div class="divider"></div>
+		<div class="form_block">
+			  <div class="row">
+			    <form class="col s12">
+			      <div class="row">
+			        <div class="input-field col s6">
+			          <i class="material-icons prefix">note_add</i>
+			          <input id="add_name" type="text" class="validate" required="required">
+			          <label for="add_name">Name</label>
+			        </div>
+			        <div class="input-field col s6">
+			          <i class="material-icons prefix">subject</i>
+			          <input id="add_value" type="tel" class="validate" required="required">
+			          <label for="add_value">Value</label>
+			        </div>
+			      </div>
+			    </form>
+			  </div>
+		</div>
+		<div class="btn_block">
+			<a class="btn" id="sort_by_name">Sort by name</a>
+			<a class="btn" id="add_to_table">Add to table</a>
+			<a class="btn" id="sort_by_value">Sort by value</a>
+		</div>
+
+		<div class="table_block">
+			<table id="data_table" class="striped">
+				        <thead>
+				          <tr>
+				              <th>Name</th>
+				              <th>Value</th>
+				              <th></th>
+				          </tr>
+				        </thead>
+
+				        <tbody id = "table__body"></tbody>
+			</table>
+		</div>
+	</div>
+
+    <script src="libs/jquery-1.12.4.min.js"></script>
+    <script src="libs/materialize.min.js"></script>
+	<script src="js/script.js"></script>
+
+</body>
+</html>
